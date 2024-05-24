@@ -30,18 +30,20 @@ switch (command) {
         break;
     case Commands.HashObject:
         const flag = args[1];
-        const path = args[2];
+        let path = args[2];
+        if (flag !== "-w") path = flag;
         const data = fs.readFileSync(path);
         const header = `blob ${data.length}\0`;
         const sha = crypto.createHash("sha1").update(header + data).digest("hex");
         if (flag === "-w") {
             const dir = sha.substring(0, 2);
             const file = sha.substring(2);
-            const compressedData = zlib.deflateSync(file);
+            const compressedData = zlib.deflateSync(data);
             fs.mkdirSync(`.git/objects/${dir}`, { recursive: true });
-            fs.writeFileSync(`.git/object/${dir}/${file}`, compressedData);
+            fs.writeFileSync(`.git/objects/${dir}/${file}`, compressedData);
         }
         process.stdout.write(sha);
+        break;
     default:
         throw new Error(`Unknown command ${command}`);
 }
