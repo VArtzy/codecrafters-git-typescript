@@ -1,3 +1,21 @@
+# Capabilities
+
+- Initializing
+- Cat file using sha
+- Hash object and blob content
+- Write cwd into tree object
+- List tree and see changes
+- Commit tree and tracking changes 
+
+## Command for `git.sh`
+
+- init
+- cat-file (flags: -p)
+- hash-object (flags: -w)
+- write-tree
+- ls-tree (flags: --name-only)
+- commit-tree (flags: -m, -p)
+
 [![progress-banner](https://backend.codecrafters.io/progress/git/7d5df16d-2263-4bee-ba39-e939af72803e)](https://app.codecrafters.io/users/codecrafters-bot?r=2qF)
 
 This is a starting point for TypeScript solutions to the
