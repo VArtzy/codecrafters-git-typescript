@@ -24,7 +24,7 @@ switch (command) {
         const decompressedBuffer = zlib.unzipSync(blob);
         const nullByteIndex = decompressedBuffer.indexOf(0);
         const blobContent = decompressedBuffer.subarray(nullByteIndex + 1).toString();
-        console.log(blobContent);
+        process.stdout.write(blobContent);
         break;
     default:
         throw new Error(`Unknown command ${command}`);
